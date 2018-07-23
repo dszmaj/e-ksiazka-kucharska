@@ -1,6 +1,6 @@
 from django.db import models
 from products.models import Product
-from recipes.models import Meal
+from meals.models import Meal
 
 
 class Amounts(models.Model):

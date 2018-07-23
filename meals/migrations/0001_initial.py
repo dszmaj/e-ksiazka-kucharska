@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='meal',
             name='category',
-            field=models.ManyToManyField(to='recipes.MealCategory'),
+            field=models.ManyToManyField(to='meals.MealCategory'),
         ),
         migrations.AddField(
             model_name='meal',
