@@ -1,3 +1,9 @@
 from django.db import models
+from products.models import Product
+from recipes.models import Meal
 
-# Create your models here.
+
+class Amounts(models.Model):
+    value = models.PositiveIntegerField()
+    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
