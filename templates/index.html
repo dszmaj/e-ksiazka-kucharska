@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <h1>{% trans 'E-Cookbook' %}</h1>
+    <div class="jumbotron">
+        <h1 class="display-3">{% trans 'E-Cookbook' %}</h1>
+        <hr class="my-4">
+        <p>{% trans 'Store your favorite recipes with their calories' %}</p>
+        <a href="{% url 'authentication:login' %}" type="button" class="btn btn-success">{% trans 'Log in' %}</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base_authentication.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'Loggout' %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans 'Loggout' %}</h1>
+    <p>{% trans 'You have successfully logged out. You can' %}
+        <a href="#">{% trans 'log in again' %}</a>.</p>
+{% endblock %}

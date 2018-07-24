@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, render_to_response
 
 
 def root(request):
-    pass
+    return render_to_response('index.html')

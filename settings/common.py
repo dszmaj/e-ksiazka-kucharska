@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+from django.urls import reverse_lazy
 from . import root, env
 from django.utils.translation import gettext_lazy as _
+
 
 SITE_ROOT = root()
 
@@ -126,4 +127,10 @@ STATIC_URL = '/static/'
 
 SECRET_KEY = env('SECRET_KEY')
 
-LOCALE_PATHS = root('locale')
+LOCALE_PATHS = [
+        root('locale'),
+    ]
+
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
+LOGIN_URL = reverse_lazy('login')
+LOGOUT_URL = reverse_lazy('logout')
