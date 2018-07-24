@@ -5,5 +5,5 @@ from meals.models import Meal
 
 class Amounts(models.Model):
     value = models.PositiveIntegerField()
-    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    meal = models.ForeignKey(Meal, related_name='amounts', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='amounts', on_delete=models.CASCADE)
