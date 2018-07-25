@@ -146,3 +146,8 @@ INTERNAL_IPS = [
     '127.0.0.1',
     'localhost'
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'authentication.authentication.EmailAuthBackend',
+)
