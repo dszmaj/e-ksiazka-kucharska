@@ -1,0 +1,17 @@
+{% extends 'base_authentication.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'Editing an account' %}{% endblock %}
+
+{% block content %}
+
+    <h1>{% trans 'Editing an account' %}</h1>
+    <p>{% trans 'You can change your account settings using the form' %}</p>
+    <form action="." method="post" enctype="multipart/form-data">
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="{% trans 'Save' %}"></p>
+    </form>
+{% endblock %}

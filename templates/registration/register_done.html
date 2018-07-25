@@ -1,0 +1,12 @@
+{% extends 'base_authentication.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'Hello' %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans 'Hello, ' %}{{ new_user.first_name }}!</h1>
+    <p>{% trans 'Your account has been created. You can  ' %}
+        <a href="{% url "authentication:login" %}">{% trans 'log in' %}</a>.</p>
+
+{% endblock %}

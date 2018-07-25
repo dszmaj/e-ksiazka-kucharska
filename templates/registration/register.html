@@ -1,0 +1,16 @@
+{% extends 'base_authentication.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'Create an account' %}{% endblock %}
+
+{% block content %}
+
+    <h1>{% trans 'Create an account' %}</h1>
+    <p>{% trans 'Fill out the form to register:' %}</p>
+    <form action="." method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" class="btn btn-success" value="{% trans 'Create' %}"></p>
+    </form>
+{% endblock %}
