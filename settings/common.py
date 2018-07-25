@@ -122,14 +122,17 @@ USE_TZ = True
 
 MEDIA_ROOT = root('media')
 MEDIA_URL = '/media/'
-STATIC_ROOT = root('static')
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    root('static'),
+]
 
 SECRET_KEY = env('SECRET_KEY')
 
 LOCALE_PATHS = [
-        root('locale'),
-    ]
+    root('locale'),
+]
 
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('login')
