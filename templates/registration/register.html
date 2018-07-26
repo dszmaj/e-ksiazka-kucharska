@@ -1,4 +1,4 @@
-{% extends 'base_authentication.html' %}
+{% extends 'base.html' %}
 
 {% load i18n %}
 
@@ -7,10 +7,24 @@
 {% block content %}
 
     <h1>{% trans 'Create an account' %}</h1>
-    <p>{% trans 'Fill out the form to register:' %}</p>
+    <p>{% trans 'Fill out the form to register' %}</p>
     <form action="." method="post">
-        {{ user_form.as_p }}
+        {% trans '* Username:' %}<br />
+            {{ user_form.username }}<br /><br />
+        {% trans '* First name:' %}<br />
+            {{ user_form.first_name }}<br /><br />
+        {% trans '* Last name:' %}<br />
+            {{ user_form.last_name }}<br /><br />
+        {% trans '* E-mail:' %}<br />
+            {{ user_form.email}}<br /><br />
+        {% trans '* Password:' %}<br />
+            {{ user_form.password}}<br /><br />
+        {% trans '* Repeat assword:' %}<br />
+            {{ user_form.password2}}<br /><br />
+
         {% csrf_token %}
         <p><input type="submit" class="btn btn-success" value="{% trans 'Create' %}"></p>
+    * - obligatory fields
+
     </form>
 {% endblock %}

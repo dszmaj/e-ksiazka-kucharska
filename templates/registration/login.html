@@ -1,23 +1,27 @@
-{% extends 'base_authentication.html' %}
+{% extends 'base.html' %}
 
 {% load i18n %}
 
 
-{% block title %}{% trans 'Logging' %}{% endblock %}
+{% block title %}{% trans 'Log in' %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans 'Logging' %}</h1>
-    {% if form.errors %}
-        <p>{% trans 'Username or/and password is incorrect. Try again.' %} </p>
-    {% else %}
-        <p>{% trans 'Fill out the form below to log in:' %}</p>
-    {% endif %}
+    <div class="jumbotron">
+        {% if form.errors %}
+            <p>{% trans 'Username or/and password is incorrect. Try again.' %} </p>
+        {% else %}
+            <h3>{% trans 'Fill out the form below to log in:' %}</h3>
+        {% endif %}
 
-    <form action="#" method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}" />
-        <p><input type="submit" class="btn btn-success" value='{% trans 'Log in' %}' /></p>
-    </form>
-        <p><a href="#">{% trans 'Have you forgotten your password?' %}</a></p>
+        <form action="{% url 'login' %}" method="post">
+            {% trans 'Username or e-mail: ' %}<br />
+                {{ form.username }}<br />
+            {% trans 'Password:' %}<br />
+                {{ form.password }}<br /><br />
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'dashboard' %}" />
+            <p><input type="submit" class="btn btn-success" value='{% trans 'Log in' %}' /></p>
+        </form>
+            <p><a href="{% url 'password_reset' %}">{% trans 'Have you forgotten your password?' %}</a></p>
+    </div>
 {% endblock %}

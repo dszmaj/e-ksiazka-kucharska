@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'common',
     'products',
     'meals',
+    'users',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'debug_toolbar',
+
 ]
 
 MIDDLEWARE = [
@@ -151,3 +153,12 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'authentication.authentication.EmailAuthBackend',
 )
+
+THUMBNAIL_DEBUG = True
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'django.ania@gmail.com'
+EMAIL_HOST_PASSWORD = '0987poiu'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

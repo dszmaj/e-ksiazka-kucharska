@@ -1,12 +1,14 @@
-{% extends 'base_authentication.html' %}
+{% extends 'base.html' %}
 
 {% load i18n %}
 
 {% block title %}{% trans 'Hello' %}{% endblock %}
 
 {% block content %}
+    <div class="jumbotron">
     <h1>{% trans 'Hello, ' %}{{ new_user.first_name }}!</h1>
     <p>{% trans 'Your account has been created. You can  ' %}
-        <a href="{% url "authentication:login" %}">{% trans 'log in' %}</a>.</p>
+        <a href="{% url "login" %}">{% trans 'log in' %}</a>.</p>
+    </div>
 
 {% endblock %}
