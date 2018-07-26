@@ -3,6 +3,15 @@
 {% load i18n %}
 
 {% block content %}
+    {% if request.user.is_authenticated %}
+        <div class="jumbotron">
+            <h1 class="display-3">{% trans 'E-Cookbook' %}</h1>
+            <hr class="my-4">
+            <p>{% trans 'Store your favorite recipes with their calories' %}</p>
+            <a href="#" type="button" class="btn btn-success">{% trans 'Add meal' %}</a>
+        </div>
+
+    {% else %}
     <div class="jumbotron">
         <h1 class="display-3">{% trans 'E-Cookbook' %}</h1>
         <hr class="my-4">
@@ -13,4 +22,6 @@
         <a href="{% url 'register' %}" type="button" class="btn btn-success">
             {% trans 'Register' %}</a>
     </div>
+
+    {% endif %}
 {% endblock %}

@@ -24,7 +24,7 @@
         {% trans 'Photo' %}<br />
             {{ user.userprofile.photo }}<br /><br />
 
-        <p><a href="{% url 'profile_edit' user.username%}" class="btn btn-success">{% trans 'Edit'%}</a></p>
+        <p><a href="{% url 'users:profile_edit' user.username%}" class="btn btn-success">{% trans 'Edit'%}</a></p>
         <p><a href="{% url 'password_change' %}" class="btn btn-success">{% trans 'Zmień hasło'%}</a></p>
 
 {% endblock %}

@@ -19,7 +19,7 @@
             {% trans 'Password:' %}<br />
                 {{ form.password }}<br /><br />
             {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'dashboard' %}" />
+            <input type="hidden" name="next" value="{% url 'base:dashboard' %}" />
             <p><input type="submit" class="btn btn-success" value='{% trans 'Log in' %}' /></p>
         </form>
             <p><a href="{% url 'password_reset' %}">{% trans 'Have you forgotten your password?' %}</a></p>

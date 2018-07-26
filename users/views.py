@@ -4,10 +4,6 @@ from django.shortcuts import render, get_object_or_404
 from users.forms import UserEditForm, UserProfileEditForm
 
 
-@login_required
-def dashboard(request):
-    return render(request, 'dashboard.html', {'dashboard': dashboard})
-
 
 @login_required
 def profile_edit(request, username):
