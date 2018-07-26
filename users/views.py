@@ -2,7 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from users.forms import UserEditForm, UserProfileEditForm
-
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 
 
 @login_required
@@ -14,6 +15,9 @@ def profile_edit(request, username):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(request, _('The update of the profile was successful'))
+        else:
+            messages.error(request, _('An error occurred while updating the profile'))
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = UserProfileEditForm(instance=request.user.userprofile)
