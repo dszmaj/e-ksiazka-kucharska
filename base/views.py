@@ -1,8 +1,4 @@
-from django.shortcuts import render_to_response, render
-
-
-def root(request):
-    return render_to_response('index.html')
+from django.shortcuts import render
 
 
 def dashboard(request):
