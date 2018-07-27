@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ meal.name }}{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-5">{{ meal.name }}</h1>
+        {% for category in meal.categories.all %}{{ category }}<br />{% endfor %}
+    </div>
+
+    <h3>{% trans 'Ingredients' %}</h3><hr />
+
+        <div class="table table-hover">
+            <div class="row table-primary">
+                <div class="col-md-2">{% trans 'Product' %}</div>
+                <div class="col-md-1">{% trans 'Base quantity'%}</div>
+                <div class="col-md-2">{% trans 'Used quantity'%}</div>
+                <div class="col-md-1">{% trans 'Calories in 100g'%}</div>
+                <div class="col-md-1">{% trans 'Protein in portion'%}</div>
+                <div class="col-md-1">{% trans 'Carbohydrate in portion'%}</div>
+                <div class="col-md-1">{% trans 'Sugar in portion'%}</div>
+                <div class="col-md-1">{% trans 'Fat in portion'%}</div>
+                <div class="col-md-1">{% trans 'Fiber in portion'%}</div>
+                <div class="col-md-1">{% trans 'Calories in portion'%}</div>
+            </div>
+
+
+
+            <div class="row table-active">
+                <div class="col-md-6">{% trans 'Total' %}</div>
+                <div class="col-md-1">Łącznie białko</div>
+                <div class="col-md-1">Łącznie węgle</div>
+                <div class="col-md-1">Łącznie cukier</div>
+                <div class="col-md-1">Łącznie tłuszcz</div>
+                <div class="col-md-1">Łącznie błonnik</div>
+                <div class="col-md-1">Łącznie kcal</div>
+            </div>
+        <div>
+        <br />
+    <h3>{% trans 'Description' %}</h3>
+    <p>{{ meal.recipe }}</p>
+
+    <h3>{% trans 'Preparation time' %}</h3>
+    <p>{{ meal.preparation_time }}</p>
+
+    {% if meal.photo %}
+        <h3>{% trans 'Photo' %}</h3>
+        <p>{{ meal.photo }}</p>
+    {% endif %}
+
+    {% if meal.comments %}
+        {% for comment in meal.comments.all %}{{ comment }}<br />{% endfor %}
+    {% endif %}
+
+
+    <a href="#"
+           type="button" class="btn btn-primary">{% trans 'Edit' %}</a>
+
+{% endblock %}

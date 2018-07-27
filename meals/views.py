@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from meals.models import Meal
 
 
@@ -14,5 +14,7 @@ def meal_edit():
     pass
 
 
-def meal_detail():
-    pass
+def meal_detail(request, pk):
+    meal = get_object_or_404(Meal, pk=pk)
+    return render(request, 'meals/meal_detail.html', {'meal': meal})
+
