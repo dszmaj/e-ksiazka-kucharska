@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-3">{% trans 'E-Cookbook' %}</h1>
+            <hr class="my-4">
+            <p>{% trans 'Store your favorite recipes with their calories' %}</p>
+            <a href="#" type="button" class="btn btn-success">{% trans 'Add meal' %}</a>
+            <hr>
+            <br /><br />
+
+            <div class="row">
+            {% for meal in meals %}
+                 <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                    <div class="card-header">
+                        Later - Category</div>
+                        <div class="card-body">
+                            <h4 class="card-title">{{ meal.name }}</h4>
+                            <p class="card-text">Add later - meal calories</p>
+                            <p class="card-text">{{ meal.preparation_time }}</p>
+                            <a href="{% url "meals:meal_detail" meal.id %}"
+                               type="button" class="btn btn-primary">{% trans 'View' %}</a>
+                            <a href="{% url "meals:meal_delete" meal.id %}"
+                               type="button" class="btn btn-danger">{% trans 'Delete' %}</a>
+                        </div>
+                 </div>
+             {% endfor %}
+            </div>
+    </div>
+{% endblock %}

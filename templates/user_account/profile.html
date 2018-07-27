@@ -21,8 +21,10 @@
             {{ user.userprofile.sex }}<br /><br />
         {% trans 'Birth date' %}<br />
             {{ user.userprofile.birth_date }}<br /><br />
+        {% if user.userprofile.photo %}
         {% trans 'Photo' %}<br />
-            {{ user.userprofile.photo }}<br /><br />
+            <img src="{{ user.userprofile.photo.url }}" width="200px"><br /><br />
+        {% endif %}
 
         <p><a href="{% url 'users:profile_edit' user.username%}" class="btn btn-success">{% trans 'Edit'%}</a></p>
         <p><a href="{% url 'password_change' %}" class="btn btn-success">{% trans 'Zmień hasło'%}</a></p>

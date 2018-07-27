@@ -1,8 +1,5 @@
 from django.shortcuts import render
-
-
-def meal_list():
-    pass
+from meals.models import Meal
 
 
 def meal_add():

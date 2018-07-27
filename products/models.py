@@ -17,7 +17,7 @@ class ProductComment(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(_('Meal name'), max_length=150)
+    name = models.CharField(_('Product name'), max_length=150)
     kcal = models.PositiveIntegerField(_('Calories per 100g'), null=True)
     protein = models.DecimalField(_('Protein per 100g'), max_digits=5, decimal_places=1, null=True)
     carbohydrate = models.DecimalField(_('Carbohydrate per 100g'), max_digits=5, decimal_places=1, null=True)
