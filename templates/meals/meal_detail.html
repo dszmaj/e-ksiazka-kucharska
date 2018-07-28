@@ -49,10 +49,12 @@
         <p>{{ meal.photo }}</p>
     {% endif %}
 
-    {% if meal.comments %}
-        {% for comment in meal.meals.all %}{{ comment }}<br />
-        <p>{{ comment.created }}</p>
-        <p>{{ commet.body }}</p>
+    {% if meal_comments %}
+        <h4>{% trans 'Comments' %}</h4>
+        {% for comment in meal_comments %}
+            {% trans 'Created:' %}
+            <p>{{ comment.created }}</p>
+            <p>{{ comment.body }}</p>
         {% endfor %}
     {% endif %}
 
@@ -60,12 +62,12 @@
         <form action="." method="post">
             {{ meal_comment_form.body }}
             {% csrf_token %}
-            <p><input type="submit" value="{% trans 'Add comment' %}"></p>
+            <p><input type="submit" class="btn btn-success" value="{% trans 'Add comment' %}"></p>
         </form>
 
 
 
     <p><a href="#"
-           type="button" class="btn btn-primary">{% trans 'Edit' %}</a></p>
+           type="button" class="btn btn-primary">{% trans 'Edit meal' %}</a></p>
 
 {% endblock %}

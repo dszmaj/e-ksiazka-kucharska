@@ -13,19 +13,11 @@ class MealCategory(models.Model):  # adding only from admin panel
         return self.name
 
 
-class MealComment(models.Model):
-    body = models.TextField(_('Content'))
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-
 class Meal(models.Model):
     # products from Product model
     name = models.CharField(_('Meal name'), max_length=150)
     recipe = models.TextField(_('Directions'), null=True)
     categories = models.ManyToManyField(MealCategory, related_name='meals')
-    comments = models.ManyToManyField(MealComment, related_name='meals', blank=True)
     photo = models.ImageField(_('Photo'), upload_to='images/%Y/%m/%d/', blank=True, null=True)
     PREPARATION_TIME_CHOICES = (
         (_('under 15 minutes'), _('under 15 minutes')),
@@ -39,3 +31,14 @@ class Meal(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class MealComment(models.Model):
+    body = models.TextField(_('Content'))
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    meal = models.ForeignKey(Meal, related_name='comments', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.meal

@@ -8,12 +8,8 @@ class ProductCategory(models.Model):  # adding only from admin panel
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-
-class ProductComment(models.Model):
-    body = models.TextField(_('Content'), null=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -26,4 +22,17 @@ class Product(models.Model):
     fibre = models.DecimalField(_('Fibre per 100g'), max_digits=5, decimal_places=1, null=True)
     photo = models.ImageField(_('Photo'), upload_to='images/%Y/%m/%d/', blank=True, null=True)
     category = models.ManyToManyField(ProductCategory, related_name='products')
-    comment = models.ManyToManyField(ProductComment, related_name='products')
+
+    def __str__(self):
+        return self.name
+
+
+class ProductComment(models.Model):
+    body = models.CharField(_('Content'), null=True, max_length=10000)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='comments', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.product
