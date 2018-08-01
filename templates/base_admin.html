@@ -1,0 +1,99 @@
+{% load static %}
+
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+    </head>
+
+<body class="skin-megna fixed-layout">
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{% url 'base:index' %}">
+                        <img src="{% static 'images/logo.jpg'%}" width="100%"></a>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav link navbar-toggler d-block d-md-none waves-effect-dark"
+                               href="javascript:void(0)">
+                                <i class="ti-menu"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark"
+                               href="javascript:void(0)">
+                                <i class="icon-menu">
+                                    :
+                                </i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <form class="app-search d-none d-md-block d-lg-block">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{% trans 'Contact Us' %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{% trans 'About' %}</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </nav>
+        </header>
+        <aside class="left-sidebar">
+            <div class="scroll-sidebar">
+
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+
+                        <li> <a class="waves-effect waves-dark" href="#" aria-expanded="false">My recipes</a></li>
+
+                        <li> <a class="waves-effect waves-dark" href="#" aria-expanded="false">My profile</a></li>
+
+                        <li> <a class="waves-effect waves-dark" href="#" aria-expanded="false">Logout</a></li>
+
+                    </ul>
+                </nav>
+            </div>
+
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+</body>
+</html>

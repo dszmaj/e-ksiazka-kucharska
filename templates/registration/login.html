@@ -5,23 +5,29 @@
 
 {% block title %}{% trans 'Log in' %}{% endblock %}
 
+
 {% block content %}
-    <div class="jumbotron">
+
+    <div class="light-blue-bg text-center">
+
         {% if form.errors %}
             <p>{% trans 'Username or/and password is incorrect. Try again.' %} </p>
         {% else %}
-            <h3>{% trans 'Fill out the form below to log in:' %}</h3>
+            <h3 class="text-center m-b-20">{% trans 'Fill out the form below to log in' %}</h3>
         {% endif %}
 
-        <form action="{% url 'login' %}" method="post">
-            {% trans 'Username or e-mail: ' %}<br />
-                {{ form.username }}<br />
-            {% trans 'Password:' %}<br />
-                {{ form.password }}<br /><br />
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'base:dashboard' %}" />
-            <p><input type="submit" class="btn btn-success" value='{% trans 'Log in' %}' /></p>
-        </form>
-            <p><a href="{% url 'password_reset' %}">{% trans 'Have you forgotten your password?' %}</a></p>
-    </div>
+            <form action="{% url 'login' %}" method="post">
+                {% trans 'Username or e-mail: ' %}<br />
+                    {{ form.username }}<br />
+                {% trans 'Password:' %}<br />
+                    {{ form.password }}<br /><br />
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{% url 'base:dashboard' %}" />
+                <input type="checkbox" class="custom-control-input" id="customCheck1"/>
+                <label class="custom-control-label" for="customCheck1">{% trans 'Remember me' %}</label>
+                <p><input type="submit" class="btn btn-info btn-rounded" value='{% trans 'Log in' %}' /></p>
+            </form>
+
+            <p><a href="{% url 'password_reset' %}" class="text-dark">{% trans 'Have you forgotten your password?' %}</a></p>
+       </div>
 {% endblock %}

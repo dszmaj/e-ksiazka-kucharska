@@ -1,14 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'base_admin.html' %}
 {% load i18n %}
 
 {% block title %}{{ meal.name }}{% endblock %}
 
 {% block content %}
-    <div class="jumbotron">
-        <h1 class="display-5">{{ meal.name }}</h1>
-        {% for category in meal.categories.all %}{{ category }}<br />{% endfor %}
+    <div class="light-blue-bg text-center" style="padding: 30px">
+        <h3 class="text-center">{{ meal.name }}</h3>
+        <p class="text-center">{% for category in meal.categories.all %}{{ category }}<br />{% endfor %}</p>
     </div>
 
+    <div class="card-body">
     <h3>{% trans 'Ingredients' %}</h3><hr />
 
         <div class="table table-hover">
@@ -36,7 +37,7 @@
                 <div class="col-md-1">Łącznie błonnik</div>
                 <div class="col-md-1">Łącznie kcal</div>
             </div>
-        <div>
+        </div>
         <br />
     <h3>{% trans 'Description' %}</h3>
     <p>{{ meal.recipe }}</p>
@@ -48,7 +49,7 @@
         <h3>{% trans 'Photo' %}</h3>
         <p>{{ meal.photo }}</p>
     {% endif %}
-
+        <hr />
     {% if meal_comments %}
         <h4>{% trans 'Comments' %}</h4>
         {% for comment in meal_comments %}
@@ -69,5 +70,6 @@
 
     <p><a href="#"
            type="button" class="btn btn-primary">{% trans 'Edit meal' %}</a></p>
+    </div>
 
 {% endblock %}

@@ -7,26 +7,29 @@
 
 
 {% block content %}
+    <div class="card-header">
+        <h3>{% trans 'My  account' %}</h3>
 
-    <h1>{% trans 'Your account' %}</h1>
-        {% trans 'Username' %}<br />
-            {{ user.username }}<br /><br />
-        {% trans 'First  name' %}<br />
-            {{ user.first_name }}<br /><br />
-        {% trans 'Last  name' %}<br />
-            {{ user.last_name }}<br /><br />
-        {% trans 'E-mail' %}<br />
-            {{ user.email }}<br /><br />
-        {% trans 'Sex' %}<br />
-            {{ user.userprofile.sex }}<br /><br />
-        {% trans 'Birth date' %}<br />
-            {{ user.userprofile.birth_date }}<br /><br />
-        {% if user.userprofile.photo %}
-        {% trans 'Photo' %}<br />
-            <img src="{{ user.userprofile.photo.url }}" width="200px"><br /><br />
-        {% endif %}
+            {% trans 'Username' %}<br />
+                {{ user.username }}<br /><br />
+            {% trans 'First  name' %}<br />
+                {{ user.first_name }}<br /><br />
+            {% trans 'Last  name' %}<br />
+                {{ user.last_name }}<br /><br />
+            {% trans 'E-mail' %}<br />
+                {{ user.email }}<br /><br />
+            {% trans 'Sex' %}<br />
+                {{ user.userprofile.sex }}<br /><br />
+            {% trans 'Birth date' %}<br />
+                {{ user.userprofile.birth_date }}<br /><br />
+            {% if user.userprofile.photo %}
+            {% trans 'Photo' %}<br />
+                <img src="{{ user.userprofile.photo.url }}" width="200px"><br /><br />
+            {% endif %}
 
-        <p><a href="{% url 'users:profile_edit' user.username%}" class="btn btn-success">{% trans 'Edit'%}</a></p>
-        <p><a href="{% url 'password_change' %}" class="btn btn-success">{% trans 'Zmień hasło'%}</a></p>
+            <p><a href="{% url 'users:profile_edit' user.username%}" class="btn btn-success">{% trans 'Edit'%}</a></p>
+            <p><a href="{% url 'password_change' %}" class="btn btn-success">{% trans 'Zmień hasło'%}</a></p>
+            </div>
 
+    </div>
 {% endblock %}

@@ -7,35 +7,54 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'bootstramp.css' %}">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
 
 <body>
-{% block header %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="collapse navbar-collapse" id="navbarColor03">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                  {% if request.user.is_authenticated %}
-                    <a class="nav-link" href="{% url 'base:dashboard' %}">{% trans 'Main'%}</a>
-                    </li>
 
-                    <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:user_detail' user.username %}">{% trans 'My profile'%}</a>
+    <div id="main-wrapper">
+        <div class="container-fluid">
+            <div class="navbar-fixed">
+                <div class="fix-width">
+                    <div class="header">
+                        <nav class="navbar navbar-expand-md navbar-light bg-white">
+                            <a class="navbar-brand" href="{% url 'base:index' %}">
+                                <img src="{% static 'images/logo.jpg' %}">
+                            </a>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">{% trans 'Contact Us' %}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">{% trans 'About' %}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">{% trans 'Logout'%}</a>
 
-                  {% else %}
-                      <a class="nav-link" href="{% url 'base:index' %}">{% trans 'Home Page'%}</a>
 
-                  {% endif %}
-               </li>
-            </ul>
-          </div>
-        </nav>
+{% block content %}
 {% endblock %}
+
+        <div class="container-fluid">
+                <footer class="footer" style="padding-top: 5px">
+                    <div class="fix-width">
+                            <div class="col-md-12 sub-footer">
+                                <span class="pull-right">
+                                    Copyright 2018
+                                </span>
+                            </div>
+                    </div>
+                </footer>
+        </div>
+
 
     {% if messages %}
         <ul class="messages">
@@ -47,8 +66,7 @@
         </ul>
     {% endif %}
 
-{% block content %}
-{% endblock %}
+
 
 
 </body>

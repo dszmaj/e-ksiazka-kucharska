@@ -1,32 +1,45 @@
-{% extends 'base.html' %}
+{% extends 'base_admin.html' %}
 
 {% load i18n %}
 
-{% block content %}
-    <div class="jumbotron">
-        <h1 class="display-3">{% trans 'E-Cookbook' %}</h1>
-            <hr class="my-4">
-            <p>{% trans 'Store your favorite recipes with their calories' %}</p>
-            <a href="#" type="button" class="btn btn-success">{% trans 'Add meal' %}</a>
-            <hr>
-            <br /><br />
 
-            <div class="row">
+{% block content %}
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h4 class="text-themecolor">E-cookbook</h4>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <a href="#" target="_blank" class="btn btn-info d-none d-lg-block m-l-15">
+                    {% trans 'Add meal' %}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <h2 class="text-title">My meals</h2>
+        <div class="card-group">
             {% for meal in meals %}
-                 <div class="card border-secondary mb-3" style="max-width: 20rem;">
-                    <div class="card-header">
-                        {% for category in meal.categories.all %}{{ category }}<br />{% endfor %}</div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            {% for category in meal.categories.all %}{{ category }}<br />{% endfor %}
+                        </div>
                         <div class="card-body">
                             <h4 class="card-title">{{ meal.name }}</h4>
                             <p class="card-text">Add later - meal calories</p>
                             <p class="card-text">{{ meal.preparation_time }}</p>
                             <a href="{% url "meals:meal_detail" meal.id %}"
-                               type="button" class="btn btn-primary">{% trans 'View' %}</a>
+                               class="btn waves-effect waves-info btn-info">{% trans 'View' %}</a>
                             <a href="{% url "meals:meal_delete" meal.id %}"
-                               type="button" class="btn btn-danger">{% trans 'Delete' %}</a>
+                               class="btn waves-effect waves-dark btn-dark">{% trans 'Delete' %}</a>
                         </div>
-                 </div>
-             {% endfor %}
-            </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+
+
 {% endblock %}
